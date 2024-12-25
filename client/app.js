@@ -26,7 +26,7 @@ function getBathValue() {
     var location = document.getElementById("uiLocations");
     var estPrice = document.getElementById("uiEstimatedPrice");
   
-    var url = "https://house-prediction-model-7.onrender.com/predict_home_price";
+    var url = "https://house-prediction-model-8.onrender.com/predict_home_price";
   
     $.post(url, {
         total_sqft: parseFloat(sqft.value),
@@ -37,12 +37,16 @@ function getBathValue() {
         console.log(data.estimated_price);
         estPrice.innerHTML = "<h2>" + data.estimated_price.toString() + " Lakh</h2>";
         console.log(status);
+    }).fail(function (xhr, status, error) {
+        console.log("Error:", error);
+        console.log("Status:", status);
+        console.log("Response:", xhr.responseText);
     });
   }
   
 function onPageLoad() {
     console.log( "document loaded" );
-    var url = "https://house-prediction-model-7.onrender.com/get_location_names";
+    var url = "https://house-prediction-model-8.onrender.com/get_location_names";
     $.get(url,function(data, status) {
         console.log("got response for get_location_names request");
         if(data) {
@@ -54,6 +58,10 @@ function onPageLoad() {
                 $('#uiLocations').append(opt);
             }
         }
+    }).fail(function (xhr, status, error) {
+        console.log("Error:", error);
+        console.log("Status:", status);
+        console.log("Response:", xhr.responseText);
     });
 }
   
