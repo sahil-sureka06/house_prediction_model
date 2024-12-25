@@ -4,10 +4,6 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-@app.route('/')
-def home():
-    return "Welcome to the Home Price Prediction API!"
-
 
 @app.route('/get_location_names', methods=['GET'])
 def get_location_names():
